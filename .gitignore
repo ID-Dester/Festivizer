@@ -11,4 +11,3 @@ artifacts/
 .templateengine/
 .nuget/
 *.log
-

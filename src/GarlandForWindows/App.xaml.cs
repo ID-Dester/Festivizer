@@ -10,7 +10,7 @@ public partial class App : System.Windows.Application
         base.OnStartup(e);
         mutex = new Mutex(true, @"Local\GarlandForWindows.MVP", out bool created);
         if (!created) { mutex.Dispose(); mutex = null; Shutdown(); return; }
-        try { Diagnostics.Write("Start"); host = new ApplicationHost(Dispatcher); host.Start(); }
+        try { Diagnostics.WriteBuildIdentity(); host = new ApplicationHost(Dispatcher); host.Start(); }
         catch (Exception ex) { Diagnostics.Write($"Startup error: {ex}"); host?.Dispose(); Shutdown(1); }
     }
     protected override void OnExit(ExitEventArgs e)
@@ -21,4 +21,3 @@ public partial class App : System.Windows.Application
         base.OnExit(e);
     }
 }
-
